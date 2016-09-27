@@ -5,7 +5,6 @@
 #Date written: Sep 22 - Sep 26, 2016
 #Purpose: This script displays products and their price listings. 
 
-
 file="Products.txt"
 model=""
 manufacturerArray=()
