@@ -4,7 +4,7 @@
 #Author: Shahid Khan
 #Date written: Sep 22 - Sep 26, 2016
 #Purpose: This script displays products and their price listings. 
-#Execution time: the_challenge.sh takes approximately 5 minutes to finish its execution on my machine i.e MacBook Pro 2.5GHz Intel Core i5 with Yosimite operating system.
+#Execution time: the_challenge.sh takes approximately 4 minutes and 20 seconds to finish its execution on my machine i.e MacBook Pro 2.5GHz Intel Core i5 with Yosimite operating system.
 
 file="Products.txt"
 model=""
