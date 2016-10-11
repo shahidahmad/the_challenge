@@ -91,7 +91,7 @@ do
 	  					priceListingsArray[$arrCount]=$listing
 	  					((arrCount++))
 	       					((listingsCount++))
-						echo "$title added to price listing array"
+						echo -e "$title added to price listing array\n\n"
 					fi
 				fi	  
 
