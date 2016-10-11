@@ -102,11 +102,13 @@ do
 				listingsLastElement=${priceListingsArray[${#priceListingsArray[@]}-1]}
 				listingsLastElement=$(echo $listingsLastElement | rev | cut -c2- | rev) #This statement removes comma found at the very end of the last listing in product's listings array.
 				priceListingsArray[${#priceListingsArray[@]}-1]=$listingsLastElement
-	      			echo -e "\n\nWriting the following entry to results.txt file"
+	      			echo -e "\nWriting the following entry to results.txt file"
 				echo "{ \"product_name\": \"$product_name\", \"listings\":[${priceListingsArray[@]}]}" | tee -a results.txt
+				echo -e "\n\n"
 	  		else
-				echo -e "\n\nWriting the following entry to results.txt file"
+				echo -e "\nWriting the following entry to results.txt file"
 	      			echo "{ \"product_name\": \"$product_name\", \"listings\":null}" | tee -a results.txt
+				echo -e "\n\n"
           		fi
       		fi
 	
