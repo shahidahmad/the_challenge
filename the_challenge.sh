@@ -82,12 +82,21 @@ do
 	  				price=$( echo "$modelText" | rev | cut -d'"' -f2 |rev)
 					currency=$(echo "$modelText" | rev | cut -d'"' -f6 | rev)
 					isCameraManufacturer=$(echo "$modelText" | awk 'BEGIN {FS="\":\""} {print $3}' | cut -d'"' -f1 | tr '[:upper:]' '[:lower:]')
+					if [[ $isCameraManufacturer =~ \  ]]
+					then
+						manufac=$isCameraManufacturer
+						isCameraManufacturer=$(echo $isCameraManufacturer | cut -d' ' -f1) #Sometimes a manufacturers' names in products.txt and listings.txt files are not exactly the same. Such as Samsung in products.txt and Samsung UK ltd. in listings.txt. In that case this statement will take care of a situation.
+					else 
+						manufac=$manufacturer
+					fi
+	
 					title=$(echo "$modelText" | awk 'BEGIN {FS="\":\""} {print $2}' | awk 'BEGIN {FS="\",\"manufacturer"} {print $1}')
-					listing="{\"currency\":\"$currency\", \"price\":\"$price\", \"manufacturer\":\"$manufacturer\", \"title\":\"$title\"},"
+#					listing="{\"currency\":\"$currency\", \"price\":\"$price\", \"manufacturer\":\"$manufacturer\", \"title\":\"$title\"},"
 					echo "Model text:  $modelText"
 					echo "++++++++++++++ Comparing $manufacturer and $isCameraManufacturer +++++++++++++++++"	
 					if  [ "$manufacturer" = "$isCameraManufacturer" ]
 					then
+						listing="{\"currency\":\"$currency\", \"price\":\"$price\", \"manufacturer\":\"$manufac\", \"title\":\"$title\"},"
 	  					priceListingsArray[$arrCount]=$listing
 	  					((arrCount++))
 	       					((listingsCount++))
